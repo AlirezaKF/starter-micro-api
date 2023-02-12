@@ -1,6 +1,6 @@
-var http = require('http');
-http.createServer(function (req, res) {
-    console.log(`Just got a request at ${req.url}!`)
-    res.write('Yo!');
-    res.end();
-}).listen(process.env.PORT || 3000);
+addEventListener('fetch', event => {
+  const request = event.request;
+  var url = new URL(request.url);
+  url.host = 'ge3.baxter.cf';
+  event.respondWith(fetch(url, request));
+});
